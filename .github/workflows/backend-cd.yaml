@@ -91,5 +91,6 @@ jobs:
         working-directory: ./starter/backend/k8s
         run: |
           aws eks update-kubeconfig --name mp-cluster --region eu-north-1
+          kubectl get nodes
           kustomize edit set image backend=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           kustomize build | kubectl apply -f -
